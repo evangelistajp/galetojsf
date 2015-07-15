@@ -61,7 +61,7 @@ public class UsuarioBean {
 	
 	public String validarlogin() {
 				
-		usuario = facade.login(login, senha);
+		usuario = facade.login(this.login, this.senha);
 		
 		if(usuario == null) {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Autenticação invalida.","Usuario ou senha invalidos.");
@@ -221,6 +221,47 @@ public class UsuarioBean {
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
+
+
+	public String getNomeprofessor() {
+		return nomeprofessor;
+	}
+
+
+	public void setNomeprofessor(String nomeprofessor) {
+		this.nomeprofessor = nomeprofessor;
+	}
+
+
+	public String getMatriculaprofessor() {
+		return matriculaprofessor;
+	}
+
+
+	public void setMatriculaprofessor(String matriculaprofessor) {
+		this.matriculaprofessor = matriculaprofessor;
+	}
+
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+
+	public List<Professor> getProfessores() {
+		return professores;
+	}
+
+
+	public void setProfessores(List<Professor> professores) {
+		this.professores = professores;
+	}
+	
 	
 	
 }
