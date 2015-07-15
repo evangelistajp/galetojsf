@@ -40,7 +40,7 @@
 	<h:dataTable var="aluno" value="#{usuario.alunos}" rendered="#{not empty usuario.alunos}">
 	<h:column>
 	<f:facet name="header">Nome</f:facet>
-	#{usuario.nome}
+	<h:commandLink value="#{usuario.nome}" action="#{usuario.seleciona(aluno)}"></h:commandLink>
 	</h:column>
 	
 	<h:column>
@@ -58,10 +58,17 @@
 	#{usuario.fone}
 	</h:column>
 	
+	<h:column>
+	<f:facet name="header">Editar</f:facet>
+	</h:column>
 	
+	<h:column>
+	<f:facet name="header">Excluir</f:facet>
+	</h:column>
 	
-	
-	
+	<h:column>
+	<h:commandLink var ="Excluir" action="#{usuario.excluirAluno(aluno)}"></h:commandLink>
+	</h:column>
 	</h:dataTable>
 
 

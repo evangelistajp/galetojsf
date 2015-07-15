@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.event.ActionEvent;
 
 import br.edu.ifpb.pweb.galeto.controller.ControllerFacade;
@@ -32,6 +33,7 @@ public class UsuarioBean {
 	private long matricula;
 	private Usuario usuario;
 	private Aluno aluno;
+	private Aluno alunoselecionado;
 	private List<Aluno> alunos;
 	
 	
@@ -89,6 +91,24 @@ public class UsuarioBean {
 		
 	}
 	
+	public String seleciona(Aluno aluno){
+		this.alunoselecionado = aluno;
+		this.loadFlash();
+		return "aluno.jsf?faces-redirect=true";
+	}
+	public void loadFlash(){
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.put("aluno", this.alunoselecionado);
+		flash.put("Alunos",this.alunos);
+	}
+	
+	public void excluirAluno(Aluno aluno){
+		DAOAluno daluno = new DAOAluno();
+		daluno.begin();
+		daluno.delete(daluno.findByMatricula(matricula));
+		daluno.commit();
+		this.listarAlunos();
+	}
 	
 	public String getLogin() {
 		return login;
