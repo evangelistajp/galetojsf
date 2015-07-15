@@ -40,16 +40,17 @@ public class UsuarioBean {
 	@PostConstruct
 	public void init(){
 		
-		Usuario usaurio = new Usuario("gg","gg","gg");
+		Usuario usaurio = new Usuario("heremita","123","heremita@gmail.com");
+		Usuario usaurio2 = new Usuario("valeria","123","valeria@gmail.com");
 		DAO dusuario = new DAOUsuario();
 		
-		System.out.println("ok1");
 		dusuario.open();
 		dusuario.begin();
 		
 		dusuario.create(usaurio);
+		dusuario.create(usaurio2);
 		dusuario.commit();
-		System.out.println("ok2");
+
 	}
 	
 	
@@ -60,7 +61,7 @@ public class UsuarioBean {
 		if(usuario == null) {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Autenticação invalida.","Usuario ou senha invalidos.");
 			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-//			DAO.close();
+
 			return null;
 		}else{
 			return "concluinte";
