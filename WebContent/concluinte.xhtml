@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<h:head>
+	<title>Cadastro Aluno</title>
+</h:head>
+
+<h:body>
+	<h:form id="cadastroaluno">
+			<h:messages errorStyle="color:red;" layout="table" globalOnly="true"
+				showDetail="true" />
+				
+			<label>Matricula:</label>
+				<h:inputText id="matricula" required="true" value="#{usuario.matricula}" pt:placeholder="Digite a matricula" >
+				<f:validateLength minimum="11" maximum="11"></f:validateLength>
+				</h:inputText>
+				<h:message for="matricula" /><br />
+			<label>Nome:</label>
+				<h:inputText id="nomealuno" value="#{usuario.nome}" required="true" pt:placeholder="Digite o nome do aluno" />
+				<h:message for="nomealuno" /><br />
+			<label>Email:</label>
+				<h:inputText id="emailaluno" value="#{usuario.email}" required="true" pt:placeholder="Digite o email do aluno" />
+				<h:message for="emailaluno" /><br />	
+			<label>Telefone:</label>
+				<h:inputText id="telefone" value="#{usuario.fone}" required="true" pt:placeholder="Digite o telefone" />
+				<h:message for="telefone" /><br />
+			<h:commandButton actionListener="#{usuario.cadastraAluno}" value="Enviar"  /><br />
+	</h:form>
+	
+	<h:form>
+	<h:commandButton actionListener="#{usuario.listarAlunos}" value="Listar Alunos"  />
+	</h:form>
+	<h:dataTable var="aluno" value="#{usuario.alunos}" rendered="#{not empty usuario.alunos}">
+	<h:column>
+	<f:facet name="header">Nome</f:facet>
+	#{usuario.nome}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Matricula</f:facet>
+	#{usuario.matricula}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Email</f:facet>
+	#{usuario.email}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Telefone</f:facet>
+	#{usuario.fone}
+	</h:column>
+	
+	
+	
+	
+	
+	</h:dataTable>
+
+
+</h:body>
+</html>

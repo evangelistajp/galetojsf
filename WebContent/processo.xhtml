@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>Cadastro Processo</title>
+</h:head>
+
+<h:body>
+	<h:form id="cadastroaluno">
+			<h:messages errorStyle="color:red;" layout="table" globalOnly="true"
+				showDetail="true" />
+				
+			<label>Numero:</label>
+			<h:inputText id="numero" required="true" value="#{usuario.login}" pt:placeholder="Digite a matricula">
+			</h:inputText>
+			<h:message for="numero" />
+			<br />
+			<label>Matricula:</label>
+			<h:inputText id="aluno" value="#{usuario.senha}" required="true" pt:placeholder="Digite o aluno" />
+			<h:message for="aluno" />
+			<br />
+			<label>Nota:</label>
+			<h:inputText id="nota" value="#{usuario.senha}" required="true" pt:placeholder="Digite a Nota" />
+			<h:message for="nota" />
+			<br />	
+			<label>Professor Orientador:</label>
+			<h:inputText id="professororientador" value="#{usuario.senha}" required="true" pt:placeholder="Digite o Professor Orientador" />
+			<h:message for="professororientador" />
+			<br />		
+			<label>Banca:</label>
+			<h:inputText id="banca" value="#{usuario.senha}" required="true" pt:placeholder="Digite a Banca" />
+			<h:message for="banca" />
+			<br />
+			<label>Tipo de Defesa:</label>
+			<h:inputText id="tipodefesa" value="#{usuario.senha}" required="true" pt:placeholder="Digite o tipo da defesa" />
+			<h:message for="tipodefesa" />
+			<br />
+			<label>Data Abertura:</label>
+			<h:inputText id="dataabertura" value="#{usuario.senha}" required="true" pt:placeholder="Digite a data de abertura" >
+			<f:convertDateTime pattern="dd/MM/yyyy" for="dataabertura"/>
+			</h:inputText>
+			<h:message for="dataabertura" />
+			<br />
+			<label>Data Encerrammento:</label>
+			<h:inputText id="dataencerramento" value="#{usuario.senha}" required="true" pt:placeholder="Digite a data de encerramento" >
+			<f:convertDateTime pattern="dd/MM/yyyy" for="dataencerramento"/>
+			</h:inputText>
+			<h:message for="dataencerramento" />
+			<br />
+			<h:commandButton actionListener="#{usuario.validarlogin}" value="Enviar"  /><br />
+	</h:form>
+
+</h:body>
+</html>

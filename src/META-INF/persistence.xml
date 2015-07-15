@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="galeto" transaction-type="RESOURCE_LOCAL">
+		<class>br.edu.ifpb.pweb.galeto.model.Usuario</class>
+		<class>br.edu.ifpb.pweb.galeto.model.Aluno</class>
+		<class>br.edu.ifpb.pweb.galeto.model.Evento</class>
+		<class>br.edu.ifpb.pweb.galeto.model.Processo</class>
+		<class>br.edu.ifpb.pweb.galeto.model.Professor</class>
+		
+		
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class"/>
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>  
+            <property name="hibernate.hbm2ddl.auto" value="update"/>  
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>  
+            <property name="javax.persistence.jdbc.user" value="SA"/>  
+            <property name="javax.persistence.jdbc.password" value=""/>  
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem://localhost/galeto"/>   
+            <property name="hibernate.showSql" value="true"/>
+              
+            
+		</properties>	
+		
+		
+	</persistence-unit>
+</persistence>
