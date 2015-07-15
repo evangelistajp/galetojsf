@@ -12,8 +12,10 @@ import javax.faces.event.ActionEvent;
 import br.edu.ifpb.pweb.galeto.controller.ControllerFacade;
 import br.edu.ifpb.pweb.galeto.dao.DAO;
 import br.edu.ifpb.pweb.galeto.dao.DAOAluno;
+import br.edu.ifpb.pweb.galeto.dao.DAOProfessor;
 import br.edu.ifpb.pweb.galeto.dao.DAOUsuario;
 import br.edu.ifpb.pweb.galeto.model.Aluno;
+import br.edu.ifpb.pweb.galeto.model.Professor;
 import br.edu.ifpb.pweb.galeto.model.Usuario;
 
 
@@ -29,13 +31,16 @@ public class UsuarioBean {
 	private String login;
 	private String senha;
 	private String nome,email,titulo;
+	private String nomeprofessor;
 	private int fone;
 	private long matricula;
+	private String matriculaprofessor;
 	private Usuario usuario;
 	private Aluno aluno;
+	private Professor professor;
 	private Aluno alunoselecionado;
 	private List<Aluno> alunos;
-	
+	private List<Professor> professores;
 	
 	@PostConstruct
 	public void init(){
@@ -89,13 +94,36 @@ public class UsuarioBean {
 		System.out.println("Aluno Cadastrado");
 	}
 	
+	public void cadastrarProfessor(ActionEvent e){
+		DAO.open();
+		DAO.begin();
+		professor = facade.VerificarProfessor(matriculaprofessor);
+		if(professor == null){
+			facade.cadastrarProfessor(this.nomeprofessor,this.matriculaprofessor);
+			
+		}else{
+			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Autenticação invalida.","Professor Ja Cadastrado");
+			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+		}
+		DAO.commit();
+		System.out.println("Professor Cadastrado");
+	}
+
+	
 	public void listarAlunos(){
 
 		DAOAluno daluno = new DAOAluno();
 		this.alunos = daluno.readAll();
-		//System.out.println(this.alunos.size());
+		
 		
 	}
+	
+	public void listarProfessor(){
+		DAOProfessor dprofessor = new DAOProfessor();
+		this.professores = dprofessor.readAll();
+		
+	}
+
 	
 	public String seleciona(Aluno aluno){
 		this.alunoselecionado = aluno;

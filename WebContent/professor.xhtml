@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>Login</title>
+</h:head>
+
+<h:body>
+<h:form id="cadastrarprofessor">
+		<h:messages errorStyle="color:red;" layout="table" globalOnly="true"
+			showDetail="true" />
+		<label>Nome:</label>
+		<h:inputText id="nomeprof" required="true" value="#{usuario.nomeprofessor}" pt:placeholder="Digite o nome do professor">	
+		</h:inputText>
+		<h:message for="nomeprof" />
+
+		<br />
+		<label>Matricula:</label>
+		<h:inputText id="matricula" value="#{usuario.matriculaprofessor}" required="true" pt:placeholder="Digite a matricula do professor" >
+		<f:validateLength minimum="11" maximum="11"></f:validateLength>
+		</h:inputText>
+		<h:message for="matricula" />
+		<br />
+		
+		<h:commandButton actionListener="#{usuario.cadastrarProfessor}" value="Cadastrar"  />
+<br />
+</h:form>
+
+<h:form>
+	<h:commandButton actionListener="#{usuario.listarProfessor}" value="Listar Professores"  />
+	</h:form>
+	<h:dataTable var="professor" value="#{usuario.professores}" rendered="#{not empty usuario.professores}">
+	<h:column>
+	<f:facet name="header">Nome</f:facet>
+	#{professor.nomeprofessor}
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">Matricula</f:facet>
+	#{professor.matriculaprofessor}
+	</h:column>
+</h:dataTable>
+
+</h:body>
+</html>
