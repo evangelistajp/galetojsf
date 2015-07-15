@@ -16,44 +16,42 @@
 			<h:messages errorStyle="color:red;" layout="table" globalOnly="true"
 				showDetail="true" />
 				
-			<label>Numero:</label>
-			<h:inputText id="numero" required="true" value="#{usuario.login}" pt:placeholder="Digite a matricula">
-			</h:inputText>
-			<h:message for="numero" />
 			<br />
 			<label>Matricula:</label>
-			<h:inputText id="aluno" value="#{usuario.senha}" required="true" pt:placeholder="Digite o aluno" />
+			<h:inputText id="aluno" value="#{processo.matricula}" required="true" pt:placeholder="Digite a Matrcicula do aluno" />
 			<h:message for="aluno" />
 			<br />
 			<label>Nota:</label>
-			<h:inputText id="nota" value="#{usuario.senha}" required="true" pt:placeholder="Digite a Nota" />
+			<h:inputText id="nota" value="#{processo.nota}" required="true" pt:placeholder="Digite a Nota" />
 			<h:message for="nota" />
 			<br />	
 			<label>Professor Orientador:</label>
-			<h:inputText id="professororientador" value="#{usuario.senha}" required="true" pt:placeholder="Digite o Professor Orientador" />
+			<h:inputText id="professororientador" value="#{processo.professor}" required="true" pt:placeholder="Digite o Professor Orientador" />
 			<h:message for="professororientador" />
 			<br />		
 			<label>Banca:</label>
-			<h:inputText id="banca" value="#{usuario.senha}" required="true" pt:placeholder="Digite a Banca" />
+			<h:inputText id="banca" value="#{processo.professor1}" required="true" pt:placeholder="Digite o primeiro professor" />
+			<h:inputText id="banca" value="#{processo.professor2}" required="true" pt:placeholder="Digite o segundo professor" />
+			<h:inputText id="banca" value="#{processo.professor3}" required="true" pt:placeholder="Digite o terceiro professor" />
 			<h:message for="banca" />
 			<br />
 			<label>Tipo de Defesa:</label>
-			<h:inputText id="tipodefesa" value="#{usuario.senha}" required="true" pt:placeholder="Digite o tipo da defesa" />
+			<h:inputText id="tipodefesa" value="#{processo.tipodefesa}" required="true" pt:placeholder="Digite o tipo da defesa" />
 			<h:message for="tipodefesa" />
 			<br />
 			<label>Data Abertura:</label>
-			<h:inputText id="dataabertura" value="#{usuario.senha}" required="true" pt:placeholder="Digite a data de abertura" >
+			<h:inputText id="dataabertura" value="#{processo.dataab}" required="true" pt:placeholder="Digite a data de abertura" >
 			<f:convertDateTime pattern="dd/MM/yyyy" for="dataabertura"/>
 			</h:inputText>
 			<h:message for="dataabertura" />
 			<br />
 			<label>Data Encerrammento:</label>
-			<h:inputText id="dataencerramento" value="#{usuario.senha}" required="true" pt:placeholder="Digite a data de encerramento" >
+			<h:inputText id="dataencerramento" value="#{processo.dataen}" pt:placeholder="Digite a data de encerramento" >
 			<f:convertDateTime pattern="dd/MM/yyyy" for="dataencerramento"/>
 			</h:inputText>
 			<h:message for="dataencerramento" />
 			<br />
-			<h:commandButton actionListener="#{usuario.validarlogin}" value="Enviar"  /><br />
+			<h:commandButton actionListener="#{processo.cadastrarprocesso}" value="Cadastrar"  /><br />
 	</h:form>
 
 </h:body>

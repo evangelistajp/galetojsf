@@ -17,15 +17,18 @@ public class Usuario {
 	private String senha;
 	@Column(length=250)
 	private String email;
+	@Column
+	private int tipo;
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Usuario(String nome, String senha,String email) {
+	public Usuario(String nome, String senha,String email, int tipo) {
 		this.login = nome;
 		this.senha = senha;
 		this.email = email;
+		this.tipo = tipo;
 	
 	}
 
@@ -39,12 +42,12 @@ public class Usuario {
 	}
 
 
-	public String getNome() {
+	public String getLogin() {
 		return login;
 	}
 
 
-	public void setNome(String nome) {
+	public void setLogin(String nome) {
 		this.login = nome;
 	}
 
@@ -68,5 +71,14 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	
 	
 }

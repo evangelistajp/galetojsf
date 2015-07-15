@@ -40,8 +40,8 @@ public class UsuarioBean {
 	@PostConstruct
 	public void init(){
 		
-		Usuario usaurio = new Usuario("heremita","123","heremita@gmail.com");
-		Usuario usaurio2 = new Usuario("valeria","123","valeria@gmail.com");
+		Usuario usaurio = new Usuario("heremita","123","heremita@gmail.com",1);
+		Usuario usaurio2 = new Usuario("valeria","123","valeria@gmail.com", 2);
 		DAO dusuario = new DAOUsuario();
 		
 		dusuario.open();
@@ -64,7 +64,12 @@ public class UsuarioBean {
 
 			return null;
 		}else{
-			return "concluinte";
+			if (usuario.getTipo() == 1) {
+				return "concluinte";
+			}else{
+				return "processo";
+			}
+			
 		}
 		
 	}
